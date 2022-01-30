@@ -459,11 +459,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kranthi\\Desktop\\Bridgelabz\\EmployeePayrollService\\EmployeePayrollService\\EmployeePayrollService.csproj",
+      "projectUniqueName": "E:\\Bridgelabz\\EmployeePayrollService ADO\\EmployeePayrollService\\EmployeePayrollService.csproj",
       "projectName": "EmployeePayrollService",
-      "projectPath": "C:\\Users\\Kranthi\\Desktop\\Bridgelabz\\EmployeePayrollService\\EmployeePayrollService\\EmployeePayrollService.csproj",
+      "projectPath": "E:\\Bridgelabz\\EmployeePayrollService ADO\\EmployeePayrollService\\EmployeePayrollService.csproj",
       "packagesPath": "C:\\Users\\Kranthi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kranthi\\Desktop\\Bridgelabz\\EmployeePayrollService\\EmployeePayrollService\\obj\\",
+      "outputPath": "E:\\Bridgelabz\\EmployeePayrollService ADO\\EmployeePayrollService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kranthi\\AppData\\Roaming\\NuGet\\NuGet.Config",
