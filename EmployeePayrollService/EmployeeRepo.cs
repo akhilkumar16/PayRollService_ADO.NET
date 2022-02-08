@@ -193,7 +193,7 @@ namespace EmployeePayrollService
             {
                 using (con)
                 {
-                    string query = @"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Payroll_Service_ADO_NET;Integrated Security=True";
+                    string query = @"update dbo.employee_payroll set BasicPay=@inputBasicPay where EmployeeName=@inputEmployeeName";
                     SqlCommand command = new SqlCommand(query, con);
                     con.Open();
                     command.Parameters.AddWithValue("@inputEmployeeName", EmployeeName);
@@ -209,6 +209,57 @@ namespace EmployeePayrollService
                 con.Close();
             }
         }
+        public void EmployeesFromForDateRange(string Date)
+        {
+            EmployeePayroll employeemodel = new EmployeePayroll(); //Creating Employee model class object
 
+            try
+            {
+                using (con)
+                {
+                    con.Open(); //open connection
+                    string query = $@"select * from dbo.employee_payroll where StartDate between cast('{Date}' as date) and cast(getdate() as date)";
+                    SqlCommand command = new SqlCommand(query, con); 
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)                
+                    {
+                        
+                        while (reader.Read()) 
+                        {
+                            employeemodel.EmployeeId = reader.GetInt32(0);
+                            employeemodel.EmployeeName = reader.GetString(1);
+                            employeemodel.Address = reader.GetString(3);
+                            employeemodel.Department = reader.GetString(4);
+                            employeemodel.Deductions = reader.GetDouble(7);
+                            employeemodel.TaxablePay = reader.GetDouble(8);
+                            employeemodel.Tax = reader.GetDouble(9);
+                            employeemodel.NetPay = reader.GetDouble(10);
+                            employeemodel.StartDate = reader.GetDateTime(11);
+                            employeemodel.City = reader.GetString(12);
+                            employeemodel.Country = reader.GetString(13);
+                            Console.WriteLine("{0},{1},{3},{4},{7},{8},{9},{10},{11},{12},{13}",
+                                employeemodel.EmployeeName, employeemodel.PhoneNumber, employeemodel.Address, employeemodel.Department,
+                                employeemodel.Gender,employeemodel.Deductions, employeemodel.TaxablePay,
+                                employeemodel.Tax, employeemodel.NetPay, employeemodel.StartDate, employeemodel.City, employeemodel.Country);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{Date} Record Not found on The Table ");
+                    }
+                    reader.Close(); //close                   
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                this.con.Close();
+            }
+        }
     }
 }

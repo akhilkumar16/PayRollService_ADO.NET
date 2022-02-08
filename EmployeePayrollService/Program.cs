@@ -21,6 +21,10 @@ namespace EmployeePayrollService
                 //uc4//
                 repository.UpdatedSalaryFromDatabase("Terisa");
                 Console.WriteLine();
+                //uc5//
+                repository.EmployeesFromForDateRange("2002-10-12");
+
+                Console.WriteLine();
             }
             EmployeeRepo repository = new EmployeeRepo();
             EmployeePayroll employee = new EmployeePayroll();
