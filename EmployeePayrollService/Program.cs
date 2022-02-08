@@ -18,6 +18,9 @@ namespace EmployeePayrollService
                 //uc3
                 repository.UpdateBasicPay("Terisa", 3000000);
                 Console.WriteLine();
+                //uc4//
+                repository.UpdatedSalaryFromDatabase("Terisa");
+                Console.WriteLine();
             }
             EmployeeRepo repository = new EmployeeRepo();
             EmployeePayroll employee = new EmployeePayroll();
