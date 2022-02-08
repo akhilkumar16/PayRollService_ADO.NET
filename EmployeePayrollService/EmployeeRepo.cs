@@ -153,5 +153,34 @@ namespace EmployeePayrollService
             }
         }
 
+        // UC3:- Ability to update the salary i.e. the base pay for Employee
+
+        public bool UpdateBasicPay(string EmployeeName, double BasicPay)
+        {
+            try
+            {
+                using (con)
+                {
+                    con.Open();
+                    string query = @"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Payroll_Service_ADO_NET;Integrated Security=True";
+                    SqlCommand command = new SqlCommand(query, con);
+                    command.Parameters.AddWithValue("@inputBasicPay", BasicPay);
+                    command.Parameters.AddWithValue("@inputEmployeeName", EmployeeName);
+                    var result = command.ExecuteNonQuery(); 
+                    Console.WriteLine("Record Update Successfully");
+                    con.Close();
+                    GetAllEmployeeData(); 
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return true;
+        }
     }
 }

@@ -12,8 +12,11 @@ namespace EmployeePayrollService
 
                 EmployeeRepo repository = new EmployeeRepo();
                 //UC2
-
                 repository.GetAllEmployeeData();
+                Console.WriteLine();
+
+                //uc3
+                repository.UpdateBasicPay("Terisa", 3000000);
                 Console.WriteLine();
             }
             EmployeeRepo repository = new EmployeeRepo();
