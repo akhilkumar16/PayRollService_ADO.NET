@@ -182,5 +182,33 @@ namespace EmployeePayrollService
             }
             return true;
         }
+        //uc4//
+        public double UpdatedSalaryFromDatabase(string EmployeeName)
+        {
+
+            string connectionString = @"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Payroll_Service_ADO_NET;Integrated Security=True";
+
+            SqlConnection con = new SqlConnection(connectionString);
+            try
+            {
+                using (con)
+                {
+                    string query = @"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Payroll_Service_ADO_NET;Integrated Security=True";
+                    SqlCommand command = new SqlCommand(query, con);
+                    con.Open();
+                    command.Parameters.AddWithValue("@inputEmployeeName", EmployeeName);
+                    return (double)command.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
     }
 }
